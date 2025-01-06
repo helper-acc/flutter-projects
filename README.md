@@ -1,10 +1,10 @@
-# lab02
+# lab04
 
-A new Flutter project.
+A new Flutter project, that consist of add autologin, internet checking and modal windows.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a continuation of laboratory work.
 
 A few resources to get you started if this is your first Flutter project:
 
