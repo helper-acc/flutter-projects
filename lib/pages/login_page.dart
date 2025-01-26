@@ -102,8 +102,15 @@ class _LoginPageState extends State<LoginPage> {
                 },
               ),
               TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/user_info');
+                onPressed: () async{
+                  final hasInternet = await checkInternetConnection();
+                  if (!hasInternet) {
+                    showModalWindow(context: context,
+                    title: 'Увага!',
+                    message: 'Немає підключення до інтернету.',);
+                  }else {
+                    Navigator.pushNamed(context, '/user_info');
+                  }
                 },
                 child: const Text('Зареєструватися',
                   style: TextStyle(color: Color(0xFF4E342E)),

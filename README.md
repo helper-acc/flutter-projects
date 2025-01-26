@@ -1,6 +1,6 @@
-# lab04
+# lab05
 
-A new Flutter project, that consist of add autologin, internet checking and modal windows.
+A new Flutter project, that consist of add API functionality to manipulate the data.
 
 ## Getting Started
 

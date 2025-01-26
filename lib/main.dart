@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab02/database/sqlite_helper.dart';
+import 'package:lab02/database/mock_api_helper.dart';
 import 'package:lab02/models/user.dart';
 import 'package:lab02/pages/login_page.dart';
 import 'package:lab02/pages/pizza_order_page.dart';
@@ -18,11 +18,12 @@ void main() async {
 
   // Перевіряємо, чи існує користувач перед автологіном
   User? user;
+  final MockApiHelper apiService = MockApiHelper();
   if (autoLogin) {
     final email = prefs.getString('email');
     if (email != null) {
       try {
-        user = await SQLiteHelper.instance.getUserByEmail(email);
+        user = await apiService.getUserByEmail(email);
       } catch (exception) {
         // Користувача немає — скидаємо статус автологіну
         await prefs.remove('autoLogin');

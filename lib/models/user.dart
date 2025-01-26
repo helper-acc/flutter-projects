@@ -12,7 +12,7 @@ final class UserModel {
 }
 
 class User {
-  final int id;
+  final String id;
   final String email;
   final String password;
   String name;
@@ -25,7 +25,7 @@ class User {
     required this.phone,
     required this.gender,
     required this.password,
-    this.id = -1,
+    this.id = '-1',
   });
 
   Map<String, Object?> toMap() => {
@@ -37,7 +37,7 @@ class User {
   };
 
   static User fromMap(Map<String, Object?> map) => User(
-    id: map[UserModel.columnId] as int,
+    id: map[UserModel.columnId] as String,
     email: map[UserModel.columnEmail] as String,
     name: map[UserModel.columnName] as String,
     phone: map[UserModel.columnPhone] as String,

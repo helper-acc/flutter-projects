@@ -35,9 +35,9 @@ class SQLiteHelper implements DatabaseHelper {
   }
 
   @override
-  Future<int> insertUser(User user) async {
+  Future<void> insertUser(User user) async {
     final db = await instance.database;
-    return await db!.insert(usersTable, user.toMap());
+    await db!.insert(usersTable, user.toMap());
   }
 
   @override
@@ -73,9 +73,9 @@ class SQLiteHelper implements DatabaseHelper {
   }
 
   @override
-  Future<int> updateUser(User user) async {
+  Future<void> updateUser(User user) async {
     final db = await instance.database;
-    return db!.update(
+    db!.update(
       usersTable,
       user.toMap(),
       where: '${UserModel.columnId} = ?',
@@ -84,16 +84,15 @@ class SQLiteHelper implements DatabaseHelper {
   }
 
   @override
-  Future<int> deleteUser(int id) async {
+  Future<void> deleteUser(String id) async {
     final db = await instance.database;
-    return db!.delete(
+    db!.delete(
       usersTable,
       where: '${UserModel.columnId} = ?',
       whereArgs: [id],
     );
   }
 
-  @override
   Future<void> close() async {
     final db = await instance.database;
     db!.close();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lab02/models/user.dart';
+import 'package:lab02/services/internet_service.dart';
 import 'package:lab02/services/user_service.dart';
 import 'package:lab02/widgets/custom_alert_dialog.dart';
 import 'package:lab02/widgets/custom_editable_text.dart';
@@ -8,8 +9,6 @@ import 'package:lab02/widgets/form_submit_button.dart';
 import 'package:lab02/widgets/gender_dropdown_menu.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../services/internet_service.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
