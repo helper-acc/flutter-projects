@@ -7,8 +7,14 @@ final class UserModel {
   static const columnPhone = 'phone';
   static const columnGender = 'gender';
   static const columnPassword = 'password';
-  static const List<String> allColumns = [columnId, columnEmail, columnName,
-    columnPhone, columnGender, columnPassword,];
+  static const List<String> allColumns = [
+    columnId,
+    columnEmail,
+    columnName,
+    columnPhone,
+    columnGender,
+    columnPassword,
+  ];
 }
 
 class User {
@@ -29,19 +35,19 @@ class User {
   });
 
   Map<String, Object?> toMap() => {
-    UserModel.columnEmail: email,
-    UserModel.columnName: name,
-    UserModel.columnPhone: phone,
-    UserModel.columnGender: gender,
-    UserModel.columnPassword: password,
-  };
+        UserModel.columnEmail: email,
+        UserModel.columnName: name,
+        UserModel.columnPhone: phone,
+        UserModel.columnGender: gender,
+        UserModel.columnPassword: password,
+      };
 
   static User fromMap(Map<String, Object?> map) => User(
-    id: map[UserModel.columnId] as String,
-    email: map[UserModel.columnEmail] as String,
-    name: map[UserModel.columnName] as String,
-    phone: map[UserModel.columnPhone] as String,
-    gender: map[UserModel.columnGender] as String,
-    password: map[UserModel.columnPassword] as String,
-  );
+        id: map[UserModel.columnId] as String,
+        email: map[UserModel.columnEmail] as String,
+        name: map[UserModel.columnName] as String,
+        phone: map[UserModel.columnPhone] as String,
+        gender: map[UserModel.columnGender] as String,
+        password: map[UserModel.columnPassword] as String,
+      );
 }

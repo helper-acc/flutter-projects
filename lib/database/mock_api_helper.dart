@@ -3,8 +3,9 @@ import 'package:http/http.dart' as http;
 import 'package:lab02/database/database_helper.dart';
 import 'package:lab02/models/user.dart';
 
-class MockApiHelper implements DatabaseHelper{
-  final String baseUrl = 'https://679403875eae7e5c4d908a18.mockapi.io/api/v1/users';
+class MockApiHelper implements DatabaseHelper {
+  final String baseUrl =
+      'https://679403875eae7e5c4d908a18.mockapi.io/api/v1/users';
 
   // Отримуємо користувача за email
   @override
@@ -17,7 +18,7 @@ class MockApiHelper implements DatabaseHelper{
       if (data.isNotEmpty) {
         return User.fromMap(data.first as Map<String, dynamic>);
       }
-    }else if(status == 404){
+    } else if (status == 404) {
       throw Exception('$email not found.');
     }
 
@@ -45,14 +46,16 @@ class MockApiHelper implements DatabaseHelper{
   }
 
   @override
-  Future<void> deleteUser(String id) async{
+  Future<void> deleteUser(String id) async {
     await http.delete(Uri.parse('$baseUrl/$id'));
   }
 
   @override
   Future<User> getUserLoggedIn(String email, String password) async {
-    final response = await http.get(Uri.parse('$baseUrl?email=$email'
-        '&password=$password'),);
+    final response = await http.get(
+      Uri.parse('$baseUrl?email=$email'
+          '&password=$password'),
+    );
     final status = response.statusCode;
     if (status == 200) {
       final decodedResponse = utf8.decode(response.bodyBytes);
@@ -60,7 +63,7 @@ class MockApiHelper implements DatabaseHelper{
       if (data.isNotEmpty) {
         return User.fromMap(data.first as Map<String, dynamic>);
       }
-    }else if(status == 404){
+    } else if (status == 404) {
       throw Exception('$email not found.');
     }
 

@@ -10,7 +10,6 @@ import 'package:lab02/services/user_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
@@ -32,7 +31,10 @@ void main() async {
       }
     }
   }
-  runApp(PizzaOrderingApp(autoLogin: autoLogin, user: user,));
+  runApp(PizzaOrderingApp(
+    autoLogin: autoLogin,
+    user: user,
+  ));
 }
 
 class PizzaOrderingApp extends StatelessWidget {
@@ -41,6 +43,7 @@ class PizzaOrderingApp extends StatelessWidget {
     required this.user,
     super.key,
   });
+
   final bool autoLogin;
   final User? user;
 
@@ -58,10 +61,10 @@ class PizzaOrderingApp extends StatelessWidget {
         ),
         initialRoute: autoLogin ? '/pizza_order' : '/login',
         routes: {
-          '/login': (context) => const LoginPage(),
-          '/user_info': (context) => const UserInfoPage(),
-          '/registration': (context) => const RegistrationPage(),
-          '/profile': (context) => const ProfilePage(),
+          '/login': (context) => LoginPage(),
+          '/user_info': (context) => UserInfoPage(),
+          '/registration': (context) => RegistrationPage(),
+          '/profile': (context) => ProfilePage(),
           '/pizza_order': (context) => const PizzaOrderPage(),
         },
       ),

@@ -6,6 +6,7 @@ import 'package:sqflite/sqflite.dart';
 class SQLiteHelper implements DatabaseHelper {
   static final SQLiteHelper instance = SQLiteHelper._init();
   static Database? _database;
+
   SQLiteHelper._init();
 
   Future<void> _createDB(Database db, int version) async {

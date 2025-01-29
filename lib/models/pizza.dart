@@ -7,10 +7,10 @@ final class PizzaModel {
 }
 
 class Pizza {
-  int ?id;
-  int ?price;
-  String ?name;
-  String ?image;
+  int? id;
+  int? price;
+  String? name;
+  String? image;
 
   Map<String, Object?> toMap() {
     return <String, Object?>{

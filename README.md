@@ -1,6 +1,9 @@
-# lab05
+# lab06
 
-A new Flutter project, that consist of add API functionality to manipulate the data.
+A Flutter application in which all Stateful widgets are replaced with Stateless,
+with updated state management for rendering dynamic data, and communication without
+the API is carried out only through state management, 
+without API calls directly in widgets, except for autologin.
 
 ## Getting Started
 

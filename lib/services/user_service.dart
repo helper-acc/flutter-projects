@@ -7,9 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserService with ChangeNotifier {
   late User _currentUser;
   bool _userExists = false;
-  final MockApiHelper _apiService = MockApiHelper();  // Ініціалізація MockAPI
+  final MockApiHelper _apiService = MockApiHelper(); // Ініціалізація MockAPI
 
   User get currentUser => _currentUser;
+
   bool get userExists => _userExists;
 
   set userExists(bool value) {
@@ -18,7 +19,7 @@ class UserService with ChangeNotifier {
   }
 
   UserService({User? user}) {
-    if(user != null){
+    if (user != null) {
       _currentUser = user;
     }
   }
@@ -26,14 +27,13 @@ class UserService with ChangeNotifier {
   Future<String> getUser(String email, String pass) async {
     String result = 'OK';
     try {
-      _currentUser = await _apiService.getUserLoggedIn(email,pass);
+      _currentUser = await _apiService.getUserLoggedIn(email, pass);
       // Зберігаємо сесію в SharedPreferences
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool('autoLogin', true);
       await prefs.setString('email', email);
       notifyListeners();
-
-    } catch(exception) {
+    } catch (exception) {
       result = getReadableErrorMessage(exception.toString());
     }
     return result;
@@ -45,7 +45,7 @@ class UserService with ChangeNotifier {
       await _apiService.getUserByEmail(email);
       _userExists = true;
       notifyListeners();
-    } catch(exception) {
+    } catch (exception) {
       result = getReadableErrorMessage(exception.toString());
     }
     return result;
@@ -77,7 +77,7 @@ class UserService with ChangeNotifier {
       // Якщо інтернет є, оновлюємо користувача через API
       await _apiService.updateUser(_currentUser);
       notifyListeners();
-    } catch(exception) {
+    } catch (exception) {
       result = getReadableErrorMessage(exception.toString());
     }
     return result;
@@ -90,7 +90,7 @@ class UserService with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove('autoLogin');
       await prefs.remove('email');
-    } catch(exception) {
+    } catch (exception) {
       result = getReadableErrorMessage(exception.toString());
     }
     return result;
